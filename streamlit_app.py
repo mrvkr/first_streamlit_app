@@ -21,9 +21,13 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 #Display the table
 streamlit.dataframe(fruits_to_show)
 
+
+
 #New Section to Display
 import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 streamlit.text(fruityvice_response.json())
+
 #Output in form of Table
+fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 streamlit.dataframe(fruityvice_normalized)
